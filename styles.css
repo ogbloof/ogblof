@@ -9,22 +9,27 @@ body {
 
 .header {
     background-color: #333;
-    height: 100px;
+    height: 347px; /* Высота шапки */
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative; /* Добавляем позиционирование, чтобы изображение шапки было видно */
 }
-.logo {
-    width: auto; /* Ширина логотипа */
-    height: auto; /* Автоматическая высота */
+
+.not {
+    color: red;
 }
-h1 {
-    font-size: 3em;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+
+.header-image {
+    position: absolute; /* Позиционируем изображение абсолютно внутри шапки */
+    top: 0; /* Размещаем изображение вверху шапки */
+    left: 0; /* Размещаем изображение слева шапки */
+    width: 100%; /* Ширина изображения равна ширине шапки */
+    height: 100%; /* Высота изображения равна высоте шапки */
+    object-fit: cover; /* Масштабирование изображения, чтобы оно полностью покрывало область */
 }
+
 
 .not {
     color: red;
@@ -51,35 +56,22 @@ h1 {
     border-radius: 10px; /* Закругленные углы */
     display: inline-block; /* Расположение в ряд */
 }
-
+.logo {
+    width: 1080px; /* Ширина логотипа */
+    height: 347px; /* Автоматическая высота */
+}
 /* Стили для контейнера кнопок */
 .container {
     text-align: center; /* Выравнивание по центру */
 }
 
-
+/* Стили для кнопок при наведении на них курсора */
 .button:hover {
     background-color: #ffd700;
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.coin {
-    width: 200px;
-    height: 200px;
-    background-image: url('coin.png');
-    background-size: cover;
-}
-
-.flip-animation {
-    animation: flip 0.5s ease-in-out;
-}
-
-@keyframes flip {
-    0% { transform: rotateY(0deg); }
-    50% { transform: rotateY(180deg); }
-    100% { transform: rotateY(360deg); }
-}
 /* Добавляем стили для анимации загрузки */
 .loader {
     border: 16px solid #f3f3f3; /* Цвет кругов */
@@ -109,19 +101,4 @@ h1 {
     left: 0;
     background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный цвет */
     z-index: 9999; /* Выше всех остальных элементов */
-}
-.coin {
-    width: 200px;
-    height: 200px;
-    background-size: cover;
-}
-
-.flip-animation {
-    animation: flip 2s ease-in-out;
-}
-
-@keyframes flip {
-    0% { transform: rotateY(0deg); }
-    50% { transform: rotateY(180deg); }
-    100% { transform: rotateY(360deg); }
 }
