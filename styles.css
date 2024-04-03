@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #222;
+    background-color: #363636;
     color: gold;
     font-family: Arial, sans-serif;
     text-align: center;
@@ -9,31 +9,23 @@ body {
 
 .header {
     background-color: #333;
-    height: 347px; /* Высота шапки */
+    height: flex; /* Высота шапки */
     display: flex;
     justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     position: relative; /* Добавляем позиционирование, чтобы изображение шапки было видно */
 }
 
-.not {
-    color: red;
-}
+
 
 .header-image {
     position: absolute; /* Позиционируем изображение абсолютно внутри шапки */
     top: 0; /* Размещаем изображение вверху шапки */
     left: 0; /* Размещаем изображение слева шапки */
     width: 100%; /* Ширина изображения равна ширине шапки */
-    height: 100%; /* Высота изображения равна высоте шапки */
+    height: 200%; /* Высота изображения равна высоте шапки */
     object-fit: cover; /* Масштабирование изображения, чтобы оно полностью покрывало область */
 }
 
-
-.not {
-    color: red;
-}
 
 .container {
     display: flex;
@@ -47,19 +39,16 @@ body {
 .button {
     width: 150px; /* Ширина кнопок */
     height: 150px; /* Высота кнопок */
-    background-color: gold;
+    background-color: rgb(255, 166, 0);
     color: black;
     font-size: 1.2em;
     border: none;
     margin: 10px;
     cursor: pointer;
-    border-radius: 10px; /* Закругленные углы */
+    border-radius: 100px; /* Закругленные углы */
     display: inline-block; /* Расположение в ряд */
 }
-.logo {
-    width: 1080px; /* Ширина логотипа */
-    height: 347px; /* Автоматическая высота */
-}
+
 /* Стили для контейнера кнопок */
 .container {
     text-align: center; /* Выравнивание по центру */
