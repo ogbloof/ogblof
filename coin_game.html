@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coin Game</title>
+    <title>NotBet</title>
     <style>
         body {
             background-color: black;
             color: gold;
             font-family: Arial, sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            width: 100%;
+            height: 200px; /* Предположительная высота шапки */
+            background-image: url('cap.png');
+            background-size: cover;
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: calc(100vh - 200px); /* 100% высоты экрана минус высота шапки */
         }
         h1 {
             font-size: 3em;
@@ -38,8 +46,9 @@
     </style>
 </head>
 <body>
+    <div class="header"></div>
     <div class="container">
-        <h1>Coin Game</h1>
+        <h1>Welcome to NotBet!</h1>
         <p>Guess the result of the coin flip!</p>
         <button class="button" onclick="flipCoin()">Flip Coin</button>
         <p id="result"></p>
