@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="loader-wrapper">
-        <div class="loader"></div>
-    </div>
-
     <div class="header">
         <h1><span class="not">Not</span>Bet</h1>
     </div>
     <div class="container">
-        <button class="button" id="button1">Button 1</button>
+        <button class="button" id="coinFlipButton" onclick="redirectToCoinGame()">Coin Flip Game</button>
         <button class="button" id="button2">Button 2</button>
         <button class="button" id="button3">Button 3</button>
     </div>
+    <div id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+    <script src="script.js" defer></script>
 </body>
 </html>

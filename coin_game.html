@@ -3,70 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotBet</title>
-    <style>
-        body {
-            background-color: black;
-            color: gold;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            width: 100%;
-            height: 200px; /* Предположительная высота шапки */
-            background-image: url('cap.png');
-            background-size: cover;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: calc(100vh - 200px); /* 100% высоты экрана минус высота шапки */
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        .button {
-            width: 200px;
-            height: 50px;
-            background-color: gold;
-            color: black;
-            font-size: 1.2em;
-            border: none;
-            margin: 10px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: darkgoldenrod;
-        }
-    </style>
+    <title>Coin Flip Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="header"></div>
-    <div class="container">
-        <h1>Welcome to NotBet!</h1>
-        <p>Guess the result of the coin flip!</p>
-        <button class="button" onclick="flipCoin()">Flip Coin</button>
-        <p id="result"></p>
+    <div class="header">
+        <h1>Coin Flip Game</h1>
     </div>
-
-    <script>
-        function flipCoin() {
-            // Generate a random number (0 or 1) representing heads or tails
-            var randomNumber = Math.floor(Math.random() * 2);
-
-            // Display the result
-            var resultElement = document.getElementById("result");
-            if (randomNumber === 0) {
-                resultElement.textContent = "You got Heads!";
-            } else {
-                resultElement.textContent = "You got Tails!";
-            }
-        }
-    </script>
+    <div class="container">
+        <button class="button" onclick="chooseSide('heads')">Heads</button>
+        <button class="button" onclick="chooseSide('tails')">Tails</button>
+        <div id="coin" class="coin"></div>
+        <div id="result"></div>
+        <button id="playAgainButton" class="button" onclick="redirectToCoinGame()">Play Again</button>
+        <button id="returnToMenuButton" class="button" onclick="returnToMenu()">Return to Menu</button>
+    </div>
 </body>
 </html>
