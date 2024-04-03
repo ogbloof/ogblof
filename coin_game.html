@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotBet</title>
+    <title>Coin Game</title>
     <style>
         body {
             background-color: black;
@@ -39,15 +39,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>NotBet</h1>
-        <button class="button" onclick="redirectToCoinGame()">Button 1</button>
-        <button class="button">Button 2</button>
-        <button class="button">Button 3</button>
+        <h1>Coin Game</h1>
+        <p>Guess the result of the coin flip!</p>
+        <button class="button" onclick="flipCoin()">Flip Coin</button>
+        <p id="result"></p>
     </div>
 
     <script>
-        function redirectToCoinGame() {
-            window.location.href = "coin_game.html";
+        function flipCoin() {
+            // Generate a random number (0 or 1) representing heads or tails
+            var randomNumber = Math.floor(Math.random() * 2);
+
+            // Display the result
+            var resultElement = document.getElementById("result");
+            if (randomNumber === 0) {
+                resultElement.textContent = "You got Heads!";
+            } else {
+                resultElement.textContent = "You got Tails!";
+            }
         }
     </script>
 </body>
