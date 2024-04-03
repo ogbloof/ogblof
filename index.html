@@ -40,9 +40,15 @@
 <body>
     <div class="container">
         <h1>NotBet</h1>
-        <a class="button" href="coin_game.html">Хуйня</a>
+        <button class="button" onclick="redirectToCoinGame()">Button 1</button>
         <button class="button">Button 2</button>
         <button class="button">Button 3</button>
     </div>
+
+    <script>
+        function redirectToCoinGame() {
+            window.location.href = "coin_game.html";
+        }
+    </script>
 </body>
 </html>
