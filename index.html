@@ -4,7 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363636;
+            color: gold;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .header {
+            position: relative;
+            text-align: center;
+            background-color: #333;
+            height: 200px; /* Примерная высота шапки */
+        }
+
+        .header-image {
+            max-width: 100%; /* Сделаем изображение масштабируемым */
+            height: 100%; /* Займет всю доступную высоту */
+            object-fit: cover; /* Подстроит изображение под размеры контейнера */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 200px); /* Рассчитываем высоту контейнера с учетом высоты шапки */
+        }
+
+        .image {
+            width: 150px; /* Ширина изображений */
+            height: auto; /* Автоматическое соотношение сторон */
+            margin: 10px; /* Отступы между изображениями */
+            cursor: pointer; /* Курсор указывает на возможность нажатия */
+            transition: transform 0.3s; /* Плавное изменение размера */
+        }
+
+        .image:hover {
+            transform: scale(1.1); /* Увеличение размера изображения при наведении */
+        }
+    </style>
 </head>
 <body>
     <div class="header">
