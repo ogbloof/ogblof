@@ -2,15 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .header {
+            position: relative;
+            text-align: center;
+        }
+        .header-image {
+            max-width: 100%; /* Сделаем изображение масштабируемым */
+            height: auto; /* Автоматически подстроим высоту */
+        }
+        .header h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px; /* Размер текста */
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <!-- Добавляем изображение в качестве шапки -->
         <img src="header.png" alt="Header Image" class="header-image">
-        <h1><span class="not">Not</span>Bet</h1>
     </div>
     <div class="container">
         <button class="button" id="coinFlipButton" onclick="redirectToCoinGame()">Coin Flip Game</button>
