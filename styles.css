@@ -8,63 +8,56 @@ body {
 }
 
 .header {
-    background-color: #333;
-    height: flex; /* Высота шапки */
-    display: flex;
-    justify-content: center;
-    position: relative; /* Добавляем позиционирование, чтобы изображение шапки было видно */
+    position: relative;
+    text-align: center;
 }
-
-
+.header-image {
+    max-width: 100%; /* Сделаем изображение масштабируемым */
+    height: auto; /* Автоматически подстроим высоту */
+}
 
 .header-image {
-    position: absolute; /* Позиционируем изображение абсолютно внутри шапки */
-    top: 0; /* Размещаем изображение вверху шапки */
-    left: 0; /* Размещаем изображение слева шапки */
-    width: 100%; /* Ширина изображения равна ширине шапки */
-    height: 100%; /* Высота изображения равна высоте шапки */
-    object-fit: cover; /* Масштабирование изображения, чтобы оно полностью покрывало область */
+    max-width: 100%; /* Сделаем изображение масштабируемым */
+    height: auto; /* Автоматически подстроим высоту */
+    box-shadow: 0px 50px 100px rgb(48, 48, 48); /* Добавляем тень: горизонтальное смещение 0px, вертикальное смещение 4px, размытие 8px, цвет тени чёрный с прозрачностью 0.2 */
 }
-
-
+/* Стили для изображений в контейнере */
 .container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 100px);
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку, если контейнер слишком узкий */
 }
 
-/* Обновленные стили для кнопок */
-.button {
-    width: 150px; /* Ширина кнопок */
-    height: 150px; /* Высота кнопок */
-    background-color: rgb(255, 166, 0);
-    color: black;
-    font-size: 1.2em;
-    border: none;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 100px; /* Закругленные углы */
-    display: inline-block; /* Расположение в ряд */
+/* Стили для изображений */
+.image {
+    width: 150px; /* Ширина изображений */
+    height: 200px; /* Высота изображений */
+    margin: 30px; /* Внешний отступ между изображениями */
 }
-
-/* Стили для контейнера кнопок */
-.container {
-    text-align: center; /* Выравнивание по центру */
-}
-
 /* Стили для кнопок при наведении на них курсора */
-.button:hover {
-    background-color: #ffd700;
+/* Добавляем стили для изображений при наведении */
+
+.image:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s
+}
+.image:active {
+    transform: scale(1);
+}
+
+.image:focus {
+    outline: none; /* Убираем рамку фокуса */
+}
+
+.image:focus:not(:hover) {
+    transform: scale(1); /* Возвращаем кнопку к исходному размеру, если нет наведения */
 }
 
 /* Добавляем стили для анимации загрузки */
 .loader {
     border: 16px solid #f3f3f3; /* Цвет кругов */
-    border-top: 16px solid #3498db; /* Цвет загрузки */
+    border-top: 16px solid #ffae00; /* Цвет загрузки */
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -74,6 +67,7 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }

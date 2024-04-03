@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <style>
-        .header {
-            position: relative;
-            text-align: center;
-        }
-        .header-image {
-            max-width: 100%; /* Сделаем изображение масштабируемым */
-            height: auto; /* Автоматически подстроим высоту */
-        }
-        .header h1 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 24px; /* Размер текста */
-        }
-    </style>
 </head>
 <body>
     <div class="header">
@@ -30,9 +12,9 @@
         <img src="header.png" alt="Header Image" class="header-image">
     </div>
     <div class="container">
-        <button class="button" id="coinFlipButton" onclick="redirectToCoinGame()">Coin Flip Game</button>
-        <button class="button" id="button2">Button 2</button>
-        <button class="button" id="button3">Button 3</button>
+        <a href="coin_game.html"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
+        <img src="button2.png" class="image" alt="Image 2">
+        <img src="image3.png" class="image" alt="Image 3">
     </div>
     <div id="loadingOverlay">
         <div class="loader"></div>
