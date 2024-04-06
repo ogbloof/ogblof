@@ -92,3 +92,15 @@ button:focus {
 image:focus {
     outline: none;
 }
+
+/* Убираем стандартный синий отсвет кнопки при нажатии */
+button:active {
+    outline: none; /* Убираем рамку фокуса */
+    box-shadow: none; /* Убираем тень */
+}
+
+/* Убираем стандартный синий отсвет кнопки при нажатии */
+image:active {
+    outline: none; /* Убираем рамку фокуса */
+    box-shadow: none; /* Убираем тень */
+}
