@@ -5,26 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #363636;
-            color: gold;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('coins_background.png');
+    background-color: #363636;
+    background-size: cover; /* Растягиваем фоновое изображение на весь экран */
+    background-position: center; /* Выравниваем фоновое изображение по центру */
+    background-repeat: no-repeat; /* Запрещаем повторение фонового изображения */
+    color: gold;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 
-        .header {
-            position: relative;
-            text-align: center;
-        }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 100%; /* Устанавливаем ширину контейнера на 100% экрана */
+    box-sizing: border-box; /* Учитываем padding и border в расчете ширины */
+    padding: 0 10px; /* Добавляем внутренний отступ слева и справа */
+}
 
-        .header-image {
-            max-width: 100%;
-            height: auto;
-            box-shadow: 0px 50px 100px rgb(48, 48, 48);
-        }
+.image {
+    width: calc(50% - 20px); /* Устанавливаем ширину изображений на половину ширины контейнера */
+    max-width: 200px; /* Максимальная ширина изображений */
+    height: auto;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
 
+.header-image {
+    width: 100%; /* Ширина заголовочного изображения на 100% экрана */
+    max-width: 600px; /* Максимальная ширина заголовочного изображения */
+    height: auto;
+    box-shadow: 0px 50px 100px rgb(48, 48, 48);
+}
+
+@media screen and (max-width: 600px) {
+    .image {
+        width: calc(100% - 20px); /* Устанавливаем ширину изображений на 100% ширины контейнера на мобильных устройствах */
+    }
+}
+    
         .container {
             display: flex;
             justify-content: center;
@@ -32,7 +58,7 @@
             flex-wrap: wrap;
             margin-top: 30px; /* Добавляем отступ сверху для контейнера */
         }
-
+    
         .image {
             width: 150px;
             height: 210px;
@@ -40,23 +66,23 @@
             cursor: pointer;
             transition: transform 0.3s; /* Плавное изменение размера при наведении */
         }
-
+    
         .image:hover {
             transform: scale(1.1);
         }
-
+    
         .image:active {
             transform: scale(1);
         }
-
+    
         .image:focus {
             outline: none;
         }
-
+    
         .image:focus:not(:hover) {
             transform: scale(1);
         }
-
+    
         .loader {
             border: 16px solid #f3f3f3;
             border-top: 16px solid #ffae00;
@@ -69,12 +95,12 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
-
+    
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
+    
         #loadingOverlay {
             display: none;
             position: fixed;
@@ -86,6 +112,7 @@
             z-index: 9999;
         }
     </style>
+    
 </head>
 <body>
     <div class="header">
