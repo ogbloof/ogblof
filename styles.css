@@ -85,3 +85,10 @@ body {
     background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный цвет */
     z-index: 9999; /* Выше всех остальных элементов */
 }
+/* Убираем стандартный синий отсвет кнопки */
+button:focus {
+    outline: none;
+}
+image:focus {
+    outline: none;
+}
