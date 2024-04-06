@@ -111,12 +111,19 @@ body {
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 9999;
         }
+
+                /* Убираем синий фон при нажатии на кнопки */
+        a:active,
+        .image:active {
+            outline: none; /* Убираем рамку фокуса */
+            box-shadow: none; /* Убираем тень */
+        }
     </style>
     
 </head>
 <body>
     <div class="header">
-        <img src="header.png" alt="Header Image" class="header-image">
+        <img src="header.png" alt="Header Image" class="header-image" >
     </div>
     <div class="container">
         <a href="coin_game.html"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
@@ -129,3 +136,4 @@ body {
     </div>
 </body>
 </html>
+
