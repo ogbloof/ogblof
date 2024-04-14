@@ -51,82 +51,74 @@ body {
     }
 }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 30px; /* Добавляем отступ сверху для контейнера */
-        }
-    
-        .image {
-            width: 130px;
-            height: 190px;
-            margin: 18px; /* Уменьшаем внешний отступ между изображениями */
-            cursor: pointer;
-            transition: transform 0.3s; /* Плавное изменение размера при наведении */
-        }
-    
-        .image:hover {
-            transform: scale(1.1);
-        }
-    
-        .image:active {
-            transform: scale(1);
-        }
-    
-        .image:focus {
-            outline: none;
-        }
-    
-        .image:focus:not(:hover) {
-            transform: scale(1);
-        }
-    
-        .loader {
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #ffae00;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-    
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    
-        #loadingOverlay {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-        /* Убираем стандартный эффект активации для кнопки на мобильных устройствах */
-        @media (hover: none) {
-        .image:active {
-            transform: scale(1); /* Поддержка для нажатия на мобильных устройствах без hover */
-            outline: none; /* Убираем обводку при нажатии */
-        }
-        }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px; /* Добавляем отступ сверху для контейнера */
+}
 
+.image {
+    width: 130px;
+    height: 190px;
+    margin: 18px; /* Уменьшаем внешний отступ между изображениями */
+    cursor: pointer;
+    transition: transform 0.3s; /* Плавное изменение размера при наведении */
+}
 
-                /* Убираем синий фон при нажатии на кнопки */
-        a:active,
-        .image:active {
-            outline: none; /* Убираем рамку фокуса */
-            box-shadow: none; /* Убираем тень */
-        /* Добавляем стиль для кнопки при нажатии */   
-        }
+.image:hover {
+    transform: scale(1.1);
+}
+
+.image:active {
+    transform: scale(1);
+    outline: none; /* Убираем обводку при нажатии */
+}
+
+.image:focus {
+    outline: none;
+}
+
+.image:focus:not(:hover) {
+    transform: scale(1);
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #ffae00;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loadingOverlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+/* Убираем синий фон при нажатии на кнопки */
+a:active,
+.image:active {
+    outline: none; /* Убираем рамку фокуса */
+    box-shadow: none; /* Убираем тень */
+}
     </style>
     
 </head>
