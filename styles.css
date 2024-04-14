@@ -11,6 +11,12 @@ body {
     position: relative;
     text-align: center;
 }
+/* Добавляем стиль для кнопки при нажатии */
+.image:active {
+    transform: scale(1);
+    outline: none; /* Убираем обводку при нажатии */
+}
+
 .header-image {
     max-width: 100%; /* Сделаем изображение масштабируемым */
     height: auto; /* Автоматически подстроим высоту */
