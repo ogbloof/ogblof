@@ -1,139 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
-    <style>
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url('coins_background.png');
-    background-color: #363636;
-    background-size: cover; /* Растягиваем фоновое изображение на весь экран */
-    background-position: center; /* Выравниваем фоновое изображение по центру */
-    background-repeat: repeat; /* Запрещаем повторение фонового изображения */
-    color: gold;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    width: 100%; /* Устанавливаем ширину контейнера на 100% экрана */
-    box-sizing: border-box; /* Учитываем padding и border в расчете ширины */
-    padding: 0 10px; /* Добавляем внутренний отступ слева и справа */
-}
-
-.image {
-    width: calc(50% - 20px); /* Устанавливаем ширину изображений на половину ширины контейнера */
-    max-width: 200px; /* Максимальная ширина изображений */
-    height: auto;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.header-image {
-    width: 100%; /* Ширина заголовочного изображения на 100% экрана */
-    max-width: 600px; /* Максимальная ширина заголовочного изображения */
-    height: auto;
-    box-shadow: 0px 50px 100px rgb(48, 48, 48);
-}
-
-@media screen and (max-width: 600px) {
-    .image {
-        width: calc(100% - 20px); /* Устанавливаем ширину изображений на 100% ширины контейнера на мобильных устройствах */
-    }
-}
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 30px; /* Добавляем отступ сверху для контейнера */
-        }
-    
-        .image {
-            width: 130px;
-            height: 190px;
-            margin: 18px; /* Уменьшаем внешний отступ между изображениями */
-            cursor: pointer;
-            transition: transform 0.3s; /* Плавное изменение размера при наведении */
-        }
-    
-        .image:hover {
-            transform: scale(1.1);
-        }
-    
-        .image:active {
-            transform: scale(1);
-        }
-    
-        .image:focus {
-            outline: none;
-        }
-    
-        .image:focus:not(:hover) {
-            transform: scale(1);
-        }
-    
-        .loader {
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #ffae00;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-    
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    
-        #loadingOverlay {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-
-                /* Убираем синий фон при нажатии на кнопки */
-        a:active,
-        .image:active {
-            outline: none; /* Убираем рамку фокуса */
-            box-shadow: none; /* Убираем тень */
-        }
-    </style>
-    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
 </head>
 <body>
     <div class="header">
-        <img src="header.png" alt="Header Image" class="header-image" >
+        <!-- Добавляем изображение в качестве шапки -->
+        <img src="header.png" alt="Изображение в шапке" class="header-image">
     </div>
     <div class="container">
-        <a href="coin_game.html"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
-        <img src="button2.png" class="image" alt="Image 2">
-        <img src="button_comingsoon.png" class="image" alt="Image 3">
-        <img src="button_comingsoon.png" class="image" alt="Image 3">
+        <a href="#" onclick="redirectToCoinGame(); return false;"><img src="button1.png" class="image" alt="Игра «Орёл или решка»"></a>
+        <img src="button2.png" class="image" alt="Изображение 2">
+        <img src="image3.png" class="image" alt="Изображение 3">
     </div>
     <div id="loadingOverlay">
         <div class="loader"></div>
     </div>
+    <script src="script.js" defer></script>
 </body>
 </html>
-
