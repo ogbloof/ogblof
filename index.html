@@ -123,10 +123,11 @@ body {
 </head>
 <body>
     <div class="header">
-        <img src="header.png" alt="Header Image" class="header-image" >
+        <img src="header.png" alt="Header Image" class="header-image">
     </div>
     <div class="container">
-        <a href="coin_game.html"><img src="button1.webp" class="image" alt="Coin Flip Game"></a>
+        <!-- Убираем ссылку и добавляем onclick -->
+        <img src="button1.webp" class="image" alt="Coin Flip Game" onclick="redirectToCoinGame()">
         <img src="button2.png" class="image" alt="Image 2">
         <img src="button_comingsoon.png" class="image" alt="Image 3">
         <img src="button_comingsoon.png" class="image" alt="Image 3">
@@ -134,5 +135,12 @@ body {
     <div id="loadingOverlay">
         <div class="loader"></div>
     </div>
+
+    <script>
+        // JavaScript функция для перенаправления на страницу coin_game.html
+        function redirectToCoinGame() {
+            window.location.href = "coin_game.html";
+        }
+    </script>
 </body>
 </html>
