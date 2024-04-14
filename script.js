@@ -8,10 +8,10 @@ function flipCoin() {
 
     setTimeout(function() {
         coin.classList.remove('flip-animation');
-        var result = Math.random() < 0.5 ? 'Орёл' : 'Решка';
-        alert('Выпало: ' + result);
-        showButtons(); // Показываем кнопки после завершения анимации броска монеты
-    }, 500); // Измените таймаут, чтобы он соответствовал продолжительности анимации броска
+        var result = Math.random() < 0.5 ? 'Heads' : 'Tails';
+        alert('You got ' + result);
+        showButtons(); // Показываем кнопки после завершения броска монеты
+    }, 500); // Adjust the timeout to match the duration of the flip animation
 }
 
 var chosenSide = '';
@@ -25,7 +25,7 @@ function chooseSide(side) {
     var coin = document.getElementById('coin');
     coin.style.backgroundImage = "url('coin.png')";
     coin.classList.add('flip-animation');
-    setTimeout(flipCoin, 2000); // Имитация броска монеты после 2 секунд
+    setTimeout(flipCoin, 2000); // Имитация подбрасывания монетки после 2 секунд
 }
 
 function showButtons() {
