@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
         var coin = document.createElement('div');
         coin.classList.add('coin');
         coin.style.left = Math.random() * 100 + 'vw'; // Случайное горизонтальное положение монеты
-        coin.style.animation = 'fall ' + (Math.random() * 2 + 1) + 's linear ' + (Math.random() * 2) + 's infinite'; // Случайная длительность анимации и задержка
+        coin.style.animation = 'fall 5s linear ' + (Math.random() * 2) + 's infinite'; // Длительность анимации 5 секунд
         coinsContainer.appendChild(coin);
     }
 });
-
+document.addEventListener("DOMContentLoaded", function() {
+    playAudio();
+});
