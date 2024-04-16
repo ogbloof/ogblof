@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
-    <link rel="stylesheet" href="style.css"> <!-- Ссылка на внешний файл стилей -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header">
         <img src="header.png" alt="Header Image" class="header-image">
+    </div>
+    <div id="coins"></div> <!-- Контейнер для монет -->
+    <div class="balance-icon">
+        <img src="wallet_icon.png" alt="Balance Icon">
     </div>
     <div class="container">
         <a href="#" onclick="sendDataToBot('coin_game')"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
@@ -31,5 +35,6 @@
             tg.close();
         }
     </script>
+    <script src="script.js"></script> <!-- Подключаем скрипт для монет -->
 </body>
 </html>
