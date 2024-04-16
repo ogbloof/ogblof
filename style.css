@@ -64,7 +64,7 @@ body {
     transform: scale(1);
 }
 
-.image {
+* {
     -webkit-tap-highlight-color: transparent; /* Для устройств с iOS */
     -webkit-touch-callout: none; /* Для устройств с iOS */
     -webkit-user-select: none; /* Для устройств с iOS */
@@ -72,14 +72,6 @@ body {
     -ms-user-select: none; /* Для устройств с Android */
     user-select: none; /* Для устройств с Android */
 }
-a:active,
-a:focus {
-    outline: none;
-}
-
-
-
-
 
 .loader {
     border: 16px solid #f3f3f3;
