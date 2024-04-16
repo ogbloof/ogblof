@@ -64,6 +64,10 @@ body {
     transform: scale(1);
 }
 
+.no {
+    -webkit-tap-highlight-color: transparent; /* Для устройств с iOS */
+}
+
 .loader {
     border: 16px solid #f3f3f3;
     border-top: 16px solid #ffae00;
