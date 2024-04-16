@@ -14,12 +14,12 @@
     <div class="balance-icon">
         <img src="wallet_icon.png" alt="Balance Icon">
     </div>
-    <audio id="myAudio" autoplay hidden>
+    <audio id="myAudio" hidden>
         <source src="sound.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
-      </audio>      
+    </audio>      
     <div class="container">
-        <a href="#" onclick="sendDataToBot('coin_game')"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
+        <a href="#" onclick="playSoundAndSendDataToBot('coin_game')"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
         <img src="button2.png" class="image" alt="Image 2">
         <img src="button_comingsoon.png" class="image" alt="Image 3">
         <img src="button_comingsoon.png" class="image" alt="Image 3">
@@ -37,6 +37,18 @@
         function sendDataToBot(command) {
             tg.sendData(command);
             tg.close();
+        }
+
+        // Функция для воспроизведения звука и отправки данных боту
+        function playSoundAndSendDataToBot(command) {
+            playAudio(); // Воспроизводим звук
+            sendDataToBot(command); // Отправляем данные боту
+        }
+
+        // Функция для воспроизведения звука
+        function playAudio() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
         }
     </script>
     <script src="script.js"></script> <!-- Подключаем скрипт для монет -->
