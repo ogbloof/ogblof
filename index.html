@@ -5,138 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
     <style>
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url('coins_background.png');
-    background-color: #363636;
-    background-size: cover; /* Растягиваем фоновое изображение на весь экран */
-    background-position: center; /* Выравниваем фоновое изображение по центру */
-    background-repeat: repeat; /* Запрещаем повторение фонового изображения */
-    color: gold;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('coins_background.png');
+            background-color: #363636;
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            color: gold;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    width: 100%; /* Устанавливаем ширину контейнера на 100% экрана */
-    box-sizing: border-box; /* Учитываем padding и border в расчете ширины */
-    padding: 0 10px; /* Добавляем внутренний отступ слева и справа */
-}
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
 
-.image {
-    width: calc(50% - 20px); /* Устанавливаем ширину изображений на половину ширины контейнера */
-    max-width: 200px; /* Максимальная ширина изображений */
-    height: auto;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
+        .image {
+            width: calc(50% - 20px);
+            max-width: 200px;
+            height: auto;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
 
-.header-image {
-    width: 100%; /* Ширина заголовочного изображения на 100% экрана */
-    max-width: 600px; /* Максимальная ширина заголовочного изображения */
-    height: auto;
-    box-shadow: 0px 50px 100px rgb(48, 48, 48);
-}
+        .header-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            box-shadow: 0px 50px 100px rgb(48, 48, 48);
+        }
 
-@media screen and (max-width: 600px) {
-    .image {
-        width: calc(100% - 20px); /* Устанавливаем ширину изображений на 100% ширины контейнера на мобильных устройствах */
-    }
-}
+        @media screen and (max-width: 600px) {
+            .image {
+                width: calc(100% - 20px);
+            }
+        }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 30px; /* Добавляем отступ сверху для контейнера */
-}
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
 
-.image {
-    width: 130px;
-    height: 190px;
-    margin: 18px; /* Уменьшаем внешний отступ между изображениями */
-    cursor: pointer;
-    transition: transform 0.3s; /* Плавное изменение размера при наведении */
-}
+        .image {
+            width: 130px;
+            height: 190px;
+            margin: 18px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
 
-.image:hover {
-    transform: scale(1.1);
-}
+        .image:hover {
+            transform: scale(1.1);
+        }
 
-.image:active {
-    transform: scale(1);
-    outline: none; /* Убираем обводку при нажатии */
-}
+        .image:active {
+            transform: scale(1);
+        }
 
-.image:focus {
-    outline: none;
-}
+        .image:focus {
+            outline: none;
+        }
 
-.image:focus:not(:hover) {
-    transform: scale(1);
-}
+        .image:focus:not(:hover) {
+            transform: scale(1);
+        }
 
-.loader {
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #ffae00;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #ffae00;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-#loadingOverlay {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-}
+        #loadingOverlay {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
 
-/* Убираем синий фон при нажатии на кнопки */
-a:active,
-.image:active {
-    outline: none; /* Убираем рамку фокуса */
-    box-shadow: none; /* Убираем тень */
-}
-/* Добавляем стили для избегания синего фона при нажатии на мобильных устройствах */
-.image:focus {
-    outline: none; /* Убираем рамку фокуса */
-}
-
-.image:active {
-    outline: none; /* Убираем рамку фокуса */
-}
+        a:active,
+        .image:active {
+            outline: none;
+            box-shadow: none;
+        }
     </style>
-    
 </head>
 <body>
     <div class="header">
         <img src="header.png" alt="Header Image" class="header-image">
     </div>
     <div class="container">
-        <!-- Убираем ссылку и добавляем onclick -->
-        <img src="button1.webp" class="image" alt="Coin Flip Game" onclick="redirectToCoinGame()">
+        <a href="#" onclick="sendDataToBot('coin_game')"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
         <img src="button2.png" class="image" alt="Image 2">
         <img src="button_comingsoon.png" class="image" alt="Image 3">
         <img src="button_comingsoon.png" class="image" alt="Image 3">
@@ -145,10 +133,15 @@ a:active,
         <div class="loader"></div>
     </div>
 
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        // JavaScript функция для перенаправления на страницу coin_game.html
-        function redirectToCoinGame() {
-            window.location.href = "coin_game.html";
+        // Инициализация Telegram Web App
+        let tg = window.Telegram.WebApp;
+
+        // Функция отправки данных боту и закрытия приложения
+        function sendDataToBot(command) {
+            tg.sendData(command);
+            tg.close();
         }
     </script>
 </body>
