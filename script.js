@@ -12,6 +12,20 @@ document.addEventListener("DOMContentLoaded", function() {
         coinsContainer.appendChild(coin);
     }
 });
+
+// Получаем ссылку на аудиоэлемент
+var audio = document.getElementById("myAudio");
+
+// Включаем воспроизведение звука
+function playAudio() {
+  audio.play();
+}
+
+// Отключаем воспроизведение звука
+function pauseAudio() {
+  audio.pause();
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     playAudio();
 });
