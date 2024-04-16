@@ -64,9 +64,15 @@ body {
     transform: scale(1);
 }
 
-.no {
+* {
     -webkit-tap-highlight-color: transparent; /* Для устройств с iOS */
+    -webkit-touch-callout: none; /* Для устройств с iOS */
+    -webkit-user-select: none; /* Для устройств с iOS */
+    -moz-user-select: none; /* Для устройств с Android */
+    -ms-user-select: none; /* Для устройств с Android */
+    user-select: none; /* Для устройств с Android */
 }
+
 
 .loader {
     border: 16px solid #f3f3f3;
