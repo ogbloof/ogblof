@@ -45,6 +45,16 @@
             max-width: 100%;
             height: auto;
         }
+
+        /* Стили для иконки кошелька */
+        .balance-icon {
+            position: absolute; /* Позиционируем иконку абсолютно */
+            bottom: 0; /* Располагаем её внизу */
+            left: 90%; /* Располагаем по центру по горизонтали */
+            transform: translateX(-50%); /* Сдвигаем на половину ширины элемента влево */
+            width: 50px; /* Задаем ширину иконке кошелька */
+            height: auto; /* Высота автоматически рассчитывается для сохранения пропорций */
+        }
     </style>
 </head>
 <body>
@@ -57,9 +67,6 @@
             <img src="header.png" alt="Header Image" class="header-image">
         </div>
         <div id="coins"></div> <!-- Контейнер для монет -->
-        <div class="balance-icon">
-            <img src="wallet_icon.png" alt="Balance Icon">
-        </div>   
         <div class="container">
             <a href="#" onclick="playSoundAndSendDataToBot('coin_game')"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
             <img src="button2.png" class="image" alt="Image 2">
@@ -71,6 +78,8 @@
     <div id="loadingOverlay">
         <div class="loader"></div>
     </div>
+
+    <img src="wallet_icon.png" alt="Balance Icon" class="balance-icon"> <!-- Иконка кошелька -->
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
