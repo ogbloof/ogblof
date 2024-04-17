@@ -5,52 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotBet</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Анимация для плавного появления основного контента */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Применяем анимацию к основному контейнеру */
+        #mainContent {
+            animation: fadeIn 1s ease-in-out forwards; /* Появление без задержки */
+            display: none; /* Скрытие основного контента до завершения загрузки */
+            position: relative; /* Добавляем позиционирование для корректного отображения экрана загрузки */
+        }
+
+        /* Применяем анимацию к экрану загрузки */
+        #loadingScreen {
+            animation: fadeOut 1s ease-in-out 3s forwards; /* Затухание с задержкой в 3 секунды */
+            position: absolute; /* Позиционируем экран загрузки абсолютно */
+            top: 0; /* Располагаем его вверху */
+            left: 0; /* и слева */
+            width: 100%; /* Растягиваем на всю ширину */
+            height: 100%; /* и высоту */
+            z-index: 9999; /* Устанавливаем высокий z-index, чтобы он был поверх остальных элементов */
+            background-color: #000000; /* Белый фон */
+            display: flex; /* Делаем контейнер блочным */
+            justify-content: center; /* Выравниваем содержимое по центру по горизонтали */
+            align-items: center; /* Выравниваем содержимое по центру по вертикали */
+        }
+
+        /* Анимация для плавного затухания экрана загрузки */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Адаптивный размер изображения загрузки */
+        #loadingScreen img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        <img src="header.png" alt="Header Image" class="header-image">
+    <div id="loadingScreen"> <!-- Экран загрузки -->
+        <img src="loading.jpg" alt="Loading Image"> <!-- Изображение загрузки -->
     </div>
-    <div id="coins"></div> <!-- Контейнер для монет -->
-    <div class="balance-icon">
-        <img src="wallet_icon.png" alt="Balance Icon">
+
+    <div id="mainContent"> <!-- Основной контент (скрыт до завершения загрузки) -->
+        <div class="header">
+            <img src="header.png" alt="Header Image" class="header-image">
+        </div>
+        <div id="coins"></div> <!-- Контейнер для монет -->
+        <div class="balance-icon">
+            <img src="wallet_icon.png" alt="Balance Icon">
+        </div>   
+        <div class="container">
+            <a href="#" onclick="playSoundAndSendDataToBot('coin_game')"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
+            <img src="button2.png" class="image" alt="Image 2">
+            <img src="button_comingsoon.png" class="image" alt="Image 3">
+            <img src="button_comingsoon.png" class="image" alt="Image 3">
+        </div>
     </div>
-    <audio id="myAudio" hidden>
-        <source src="sound.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>      
-    <div class="container">
-        <a href="#" onclick="playSoundAndSendDataToBot('coin_game')"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
-        <img src="button2.png" class="image" alt="Image 2">
-        <img src="button_comingsoon.png" class="image" alt="Image 3">
-        <img src="button_comingsoon.png" class="image" alt="Image 3">
-    </div>
+
     <div id="loadingOverlay">
         <div class="loader"></div>
     </div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        // Инициализация Telegram Web App
-        let tg = window.Telegram.WebApp;
-
-        // Функция отправки данных боту без закрытия приложения
-        function sendDataToBot(command) {
-            tg.sendData(command);
-            // tg.close(); // Удалите эту строку или закомментируйте, чтобы избежать закрытия приложения
-        }
-
-        // Функция для воспроизведения звука и отправки данных боту
-        function playSoundAndSendDataToBot(command) {
-            playAudio(); // Воспроизводим звук
-            sendDataToBot(command); // Отправляем данные боту
-        }
-
-        // Функция для воспроизведения звука
-        function playAudio() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-        }
-    </script>
+    
     <script src="script.js"></script> <!-- Подключаем скрипт для монет -->
+
+    <script>
+        // Функция, которая будет вызвана после завершения загрузки
+        function showMainContent() {
+            document.getElementById("mainContent").style.display = "block"; // Показываем основной контент
+        }
+
+        // Вызываем функцию showMainContent после полной загрузки страницы
+        window.addEventListener("load", showMainContent);
+    </script>
 </body>
 </html>
