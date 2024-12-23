@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Coin Flip Game</title>
+    <title>Dice Game</title>
     <style>
         /* Общий стиль */
         body {
@@ -57,7 +57,6 @@
         }
 
         /* Логотип */
-        /* Логотип */
         .header-logo {
             width: 100%;
             height: auto;
@@ -67,11 +66,12 @@
             left: 0;
         }
 
-        .coin-container {
-            width: 150px;
-            height: 150px;
+        /* Прямоугольник для кубика */
+        .dice-container {
+            width: 200px;
+            height: 200px;
             border: 3px solid #ffa500;
-            border-radius: 50%;
+            border-radius: 10px; /* Закругленные углы */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -80,8 +80,8 @@
             box-shadow: 0 0 10px #ffa500;
         }
 
-        #coin {
-            font-size: 2rem;
+        #dice {
+            font-size: 3rem;
             color: #ffa500;
         }
 
@@ -118,20 +118,14 @@
         <!-- Логотип -->
         <img src="header.png" alt="NotBet Logo" class="header-logo">
 
-        <!-- Монетка в центре -->
-        <div class="coin-container">
-            <div id="coin">🪙</div>
+        <!-- Прямоугольник для кубика -->
+        <div class="dice-container">
+            <div id="dice">🎲</div>
         </div>
 
         <!-- Кнопки управления -->
         <div class="button-container">
-            <button class="button" onclick="chooseSide('heads')">Heads</button>
-            <button class="button" onclick="chooseSide('tails')">Tails</button>
-        </div>
-
-        <div id="result" class="result"></div>
-
-        <div class="button-container">
+            <button class="button" onclick="rollDice()">Roll Dice</button>
             <button class="button" onclick="redirectToCoinGame()">Play Again</button>
             <a href="index.html"><button class="button" onclick="returnToMenu()">Return to Menu</button></a>
         </div>
@@ -144,21 +138,12 @@
             document.getElementById('mainContent').style.display = 'block';
         };
 
-        // Пример анимации монетки
-        function chooseSide(side) {
-            const coin = document.getElementById('coin');
-            const result = document.getElementById('result');
-            coin.textContent = Math.random() < 0.5 ? "Heads" : "Tails";
-            result.textContent = coin.textContent === side ? "You Win!" : "You Lose!";
+        // Функция для броска кубика
+        function rollDice() {
+            const dice = document.getElementById('dice');
+            const roll = Math.floor(Math.random() * 6) + 1; // Генерация числа от 1 до 6
+            dice.textContent = roll;
         }
     </script>
-    <div class="button-container">
-        <input type="number" id="betAmount" placeholder="Enter your bet" style="margin-bottom: 10px; padding: 10px;">
-        <button id="headsButton" class="button">Heads</button>
-        <button id="tailsButton" class="button">Tails</button>
-    </div>
-    <div id="result" class="result"></div>
-    <div id="balance" class="result"></div>
-    
 </body>
 </html>
