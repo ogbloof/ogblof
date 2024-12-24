@@ -19,7 +19,7 @@ if (window.Telegram && Telegram.WebApp) {
 
         // Функция для обновления баланса с использованием userId
         function updateBalance() {
-            fetch(`/api/get_balance?user_id=${userId}`)
+            fetch(`/db/get_user_info?user_id=${userId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.balance) {
