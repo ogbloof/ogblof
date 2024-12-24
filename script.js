@@ -9,20 +9,22 @@ setTimeout(() => {
 
 // Проверяем наличие объекта Telegram WebApp
 function updateBalance() {
-    const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id || '123456';
+    const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id || '123456'; // Подставьте реальный user_id
+    console.log("Fetching balance for user:", userId);
+
     fetch(`http://127.0.0.1:5000/api/get_balance?user_id=${userId}`)
         .then(response => response.json())
         .then(data => {
             if (data.balance !== undefined) {
-                document.getElementById('balanceDisplay').textContent = `${data.balance} TON`;
+                // Отображаем баланс
+                document.getElementById('balanceDisplay').textContent = `${data.balance} BET`;
+                console.log(`Username: ${data.username}, Balance: ${data.balance}`);
             } else {
-                console.error("Ошибка получения баланса:", data);
+                console.error("Ошибка получения баланса:", data.error);
             }
         })
         .catch(error => console.error("Ошибка подключения к API:", error));
 }
-
-document.addEventListener("DOMContentLoaded", updateBalance);
 
 
 document.addEventListener("DOMContentLoaded", updateBalance);
