@@ -10,7 +10,7 @@ setTimeout(() => {
 // Проверяем наличие объекта Telegram WebApp
 function updateBalance() {
     const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id || 'default_user_id';
-    fetch(`https://ogblof.up.railway.app/api/get_balance?user_id=${userId}`)
+    fetch(`https://ogblof.onrender.com/api/get_balance?user_id=${userId}`)
         .then(response => response.json())
         .then(data => {
             if (data.balance !== undefined) {
