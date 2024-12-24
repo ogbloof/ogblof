@@ -9,7 +9,7 @@ setTimeout(() => {
 
 // Функция для обновления баланса
 function updateBalance() {
-    fetch('/api/get_balance?user_id=USER_ID') // Замените USER_ID на идентификатор пользователя
+    fetch('/api/get_balance?user_id=${userId}') // Замените USER_ID на идентификатор пользователя
         .then(response => response.json())
         .then(data => {
             if (data.balance) {
