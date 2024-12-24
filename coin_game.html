@@ -2,22 +2,236 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Coin Flip Game</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #ffa500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            box-sizing: border-box;
+        }
+
+        .header-logo {
+            width: 100%;
+            height: 80px;
+            background-image: url('header.png');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+
+        .coin {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .coin img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            backface-visibility: hidden;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .coin .front {
+            transform: rotateY(0deg);
+        }
+
+        .coin .back {
+            transform: rotateY(180deg);
+        }
+
+        @keyframes flipCoin {
+            0% {
+                transform: rotateY(0deg);
+            }
+            50% {
+                transform: rotateY(1800deg);
+            }
+            100% {
+                transform: rotateY(3600deg);
+            }
+        }
+
+        .coin.flip {
+            animation: flipCoin 3s ease-in-out forwards;
+        }
+
+        .button-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .button {
+            background-color: #ffa500;
+            border: none;
+            color: #000;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff8500;
+        }
+
+        .input-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ffa500;
+            border-radius: 5px;
+            background-color: #333;
+            color: #ffa500;
+            width: 200px;
+            text-align: center;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .return-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #ffa500;
+            color: #000;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .return-button:hover {
+            background-color: #ff8500;
+        }
+    </style>
+    <script>
+        let userChoice = null; // Переменная для хранения выбора пользователя
+
+        // Функция для начала анимации подбрасывания монеты
+        function flipCoinAnimation() {
+            const coin = document.querySelector('.coin');
+            const resultDiv = document.getElementById("result");
+            const coinFront = document.querySelector('.coin .front');
+            const coinBack = document.querySelector('.coin .back');
+
+            // Получение суммы ставки
+            const betAmount = document.getElementById("betAmount").value;
+
+            // Проверка ввода ставки
+            if (betAmount === "" || betAmount <= 0) {
+                resultDiv.textContent = "Please enter a valid bet amount (greater than 0).";
+                return;
+            }
+
+            // Генерация случайного исхода (Bet или Not)
+            const isHeads = Math.random() > 0.5; // heads: true, tails: false
+            const outcomeImage = isHeads ? "not_coin.png" : "bet_coin.png";
+            const outcomeText = isHeads ? "Not" : "Bet";
+
+            // Сброс предыдущей анимации
+            coin.classList.remove('flip');
+
+            // Запуск анимации
+            setTimeout(() => {
+                coin.classList.add('flip');
+            }, 10);
+
+            // Устанавливаем картинку после окончания анимации
+            setTimeout(() => {
+                // Изменяем изображение монеты в зависимости от случайного результата
+                if (isHeads) {
+                    coinFront.src = outcomeImage;
+                    coinBack.src = "bet_coin.png";
+                } else {
+                    coinBack.src = outcomeImage;
+                    coinFront.src = "not_coin.png";
+                }
+
+                resultDiv.textContent = `Result: ${outcomeText}`;
+
+                // Определяем, был ли угадан результат
+                if ((userChoice === "not" && isHeads) || (userChoice === "bet" && !isHeads)) {
+                    resultDiv.textContent += " - You win!";
+                } else {
+                    resultDiv.textContent += " - You lose!";
+                }
+            }, 3000); // Время анимации (3 секунды)
+        }
+
+        // Функция для обработки выбора ставки
+        function makeChoice(choice) {
+            userChoice = choice; // Сохраняем выбор пользователя
+            flipCoinAnimation(); // Запускаем анимацию
+        }
+
+        // Возврат в меню
+        function returnToMenu() {
+            window.location.href = "index.html";
+        }
+    </script>
 </head>
 <body>
-    <div class="header">
-        <h1>Coin Flip Game</h1>
-    </div>
-    <div class="container">
-        <button class="button" onclick="chooseSide('heads')">Heads</button>
-        <button class="button" onclick="chooseSide('tails')">Tails</button>
-        <div id="coin" class="coin"></div>
-        <div id="result"></div>
-        <button id="playAgainButton" class="button" onclick="redirectToCoinGame()">Play Again</button>
-        <button id="returnToMenuButton" class="button" onclick="returnToMenu()">Return to Menu</button>
+    <div class="app-container">
+        <!-- Логотип -->
+        <div class="header-logo"></div>
+
+        <!-- Монета -->
+        <div class="coin">
+            <img class="front" src="bet_coin.png" alt="Bet Coin">
+            <img class="back" src="not_coin.png" alt="Not Coin">
+        </div>
+
+        <!-- Поле для ввода ставки -->
+        <div class="input-container">
+            <input type="number" id="betAmount" placeholder="Enter your bet">
+        </div>
+
+        <!-- Кнопки выбора ставки -->
+        <div class="button-container">
+            <button class="button" onclick="makeChoice('bet')">Bet</button>
+            <button class="button" onclick="makeChoice('not')">Not</button>
+        </div>
+
+        <!-- Результат -->
+        <div id="result" class="result"></div>
+
+        <!-- Кнопка возврата -->
+        <button class="return-button" onclick="returnToMenu()">Return to Menu</button>
     </div>
 </body>
 </html>

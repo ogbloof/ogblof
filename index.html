@@ -35,14 +35,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: none;
-            padding: 10px;
+            background: rgba(63, 63, 63, 0.274);
+            padding: 15px;
             margin: 10px;
             width: calc(100% - 40px);
-            max-width: 400px;
+            max-width: 345px;
             font-size: 20px;
             font-weight: bold;
             color: #ffa500;
+            border: 3px solid #ffa500;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
 
         .balance-container img {
@@ -55,10 +58,10 @@
         .game-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            width: 90%;
-            max-width: 400px;
-            margin: 20px auto;
+            gap: 10px;
+            width: 60%;
+            max-width: 600px;
+            margin: 10px auto;
         }
 
         .game-button {
@@ -127,13 +130,13 @@
         </header>
         <section class="balance-container">
             <img src="wallet_icon.png" alt="Wallet Icon" onclick="redirectToBot()">
-            <span>Баланс: <span id="balanceDisplay">0 TON</span></span>
+            <span>Баланс: <span id="balanceDisplay">0 BET</span></span>
         </section>
         <section class="game-buttons">
             <a href="coin_game.html" class="game-button">
                 <img src="button1.png" alt="Coin Flip Game">
             </a>
-            <a href="#" class="game-button">
+            <a href="dice_game.html" class="game-button">
                 <img src="button2.png" alt="Dice Game">
             </a>
             <a href="#" class="game-button">
@@ -143,7 +146,7 @@
                 <img src="button_comingsoon.png" alt="Coming Soon">
             </a>
         </section>
-        <div class="beta-version">Beta Version 1.0001</div>
+        <div class="beta-version">Beta Version 1.001</div>
     </div>
 
     <script>

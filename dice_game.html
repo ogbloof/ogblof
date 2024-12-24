@@ -5,96 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dice Game</title>
     <style>
-        /* Общий стиль */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #000; /* Чёрный фон */
-            color: #ffa500; /* Оранжевый текст */
+            color: #ffa500;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
-            position: relative;
-            box-sizing: border-box;
-            border: 5px solid #ffa500; /* Рамка по краям экрана */
         }
 
-        /* Экран загрузки */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .app-container {
             width: 100%;
             height: 100%;
-            background-color: #000;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            z-index: 10;
+            justify-content: flex-start;
+            box-sizing: border-box;
         }
 
-        .loader {
-            border: 6px solid #333;
-            border-top: 6px solid #ffa500;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        #mainContent {
-            display: none;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Логотип */
         .header-logo {
             width: 100%;
-            height: auto;
-            margin: 0; /* Убираем отступы вокруг логотипа */
-            position: absolute;
-            top: 0;
-            left: 0;
+            height: 80px; /* Уменьшенная высота заголовка */
+            background-image: url('header.png');
+            background-size: cover; /* Покрытие полностью */
+            background-position: center;
+            margin-bottom: 20px; /* Отступ после заголовка */
         }
 
-        /* Прямоугольник для кубика */
-        .dice-container {
+        .dice-wrapper {
+            position: relative;
             width: 200px;
             height: 200px;
-            border: 3px solid #ffa500;
-            border-radius: 10px; /* Закругленные углы */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            background-color: #333;
-            box-shadow: 0 0 10px #ffa500;
+            perspective: 1000px;
         }
 
-        #dice {
-            font-size: 3rem;
-            color: #ffa500;
+        .dice {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            transition: transform 5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .button-container {
-            margin-top: 20px;
+        .dice img {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            backface-visibility: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
+
+        .side-1 { transform: rotateY(0deg) translateZ(100px); }
+        .side-2 { transform: rotateY(90deg) translateZ(100px); }
+        .side-3 { transform: rotateY(180deg) translateZ(100px); }
+        .side-4 { transform: rotateY(-90deg) translateZ(100px); }
+        .side-5 { transform: rotateX(90deg) translateZ(100px); }
+        .side-6 { transform: rotateX(-90deg) translateZ(100px); }
 
         .button {
             background-color: #ffa500;
             border: none;
             color: #000;
             padding: 15px 30px;
-            margin: 10px;
+            margin: 20px;
             cursor: pointer;
             border-radius: 5px;
             font-size: 16px;
@@ -104,46 +83,144 @@
         .button:hover {
             background-color: #ff8500;
         }
+
+        .input-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ffa500;
+            border-radius: 5px;
+            background-color: #333;
+            color: #ffa500;
+            width: 200px;
+            text-align: center;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .return-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #ffa500;
+            color: #000;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .return-button:hover {
+            background-color: #ff8500;
+        }
     </style>
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <!-- Экран загрузки -->
-    <div id="loadingScreen">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Основной контент -->
-    <div id="mainContent">
-        <!-- Логотип -->
-        <img src="header.png" alt="NotBet Logo" class="header-logo">
-
-        <!-- Прямоугольник для кубика -->
-        <div class="dice-container">
-            <div id="dice">🎲</div>
-        </div>
-
-        <!-- Кнопки управления -->
-        <div class="button-container">
-            <button class="button" onclick="rollDice()">Roll Dice</button>
-            <button class="button" onclick="redirectToCoinGame()">Play Again</button>
-            <a href="index.html"><button class="button" onclick="returnToMenu()">Return to Menu</button></a>
-        </div>
-    </div>
-
     <script>
-        // Пример скрытия экрана загрузки
-        window.onload = function() {
-            document.getElementById('loadingScreen').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
-        };
-
-        // Функция для броска кубика
         function rollDice() {
-            const dice = document.getElementById('dice');
-            const roll = Math.floor(Math.random() * 6) + 1; // Генерация числа от 1 до 6
-            dice.textContent = roll;
+            const dice = document.getElementById("dice");
+            const randomRoll = Math.floor(Math.random() * 6) + 1;
+
+            // Generate random additional rotations to simulate extended spinning
+            const extraX = 360 * (Math.floor(Math.random() * 4) + 3); // 3 to 6 extra spins
+            const extraY = 360 * (Math.floor(Math.random() * 4) + 3); // 3 to 6 extra spins
+
+            const rotations = {
+                1: `rotateX(${extraX + 0}deg) rotateY(${extraY + 0}deg)`,
+                2: `rotateX(${extraX + 0}deg) rotateY(${extraY - 90}deg)`,
+                3: `rotateX(${extraX + 0}deg) rotateY(${extraY - 180}deg)`,
+                4: `rotateX(${extraX + 0}deg) rotateY(${extraY + 90}deg)`,
+                5: `rotateX(${extraX - 90}deg) rotateY(${extraY}deg)`,
+                6: `rotateX(${extraX + 90}deg) rotateY(${extraY}deg)`
+            };
+
+            // Apply extended rotation
+            dice.style.transform = rotations[randomRoll];
+
+            // Show the result after animation
+            setTimeout(() => {
+                const resultNumber = parseInt(document.querySelector(`.side-${randomRoll}`).getAttribute('data-number'));
+                evaluateBet(resultNumber);
+            }, 5000); // Adjust to match the animation duration
+        }
+
+        function evaluateBet(resultNumber) {
+            const choice = document.querySelector('.button.active')?.getAttribute('data-choice');
+            let resultMessage = `You rolled a ${resultNumber}! `;
+
+            if ((choice === '1-2' && resultNumber >= 1 && resultNumber <= 2) ||
+                (choice === '3-4' && resultNumber >= 3 && resultNumber <= 4) ||
+                (choice === '5-6' && resultNumber >= 5 && resultNumber <= 6)) {
+                resultMessage += 'You win!';
+            } else {
+                resultMessage += 'You lose!';
+            }
+
+            document.getElementById("result").innerText = resultMessage;
+        }
+
+        function playDice(choice) {
+            document.querySelectorAll('.button').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.button[data-choice="${choice}"]`).classList.add('active');
+
+            const betAmount = parseInt(document.getElementById("betAmount").value);
+            if (!betAmount || betAmount <= 0) {
+                document.getElementById("result").innerText = "Please enter a valid bet amount (greater than 0).";
+                return;
+            }
+
+            document.getElementById("result").innerText = "The dice is spinning!";
+            rollDice();
+        }
+
+        function returnToMenu() {
+            window.location.href = "index.html";
         }
     </script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Логотип -->
+        <div class="header-logo"></div>
+
+        <!-- Кубик -->
+        <div class="dice-wrapper">
+            <div class="dice" id="dice">
+                <img src="kub1.png" class="side-1" data-number="1">
+                <img src="kub2.png" class="side-2" data-number="2">
+                <img src="kub3.png" class="side-3" data-number="3">
+                <img src="kub4.png" class="side-4" data-number="4">
+                <img src="kub5.png" class="side-5" data-number="5">
+                <img src="kub6.png" class="side-6" data-number="6">
+            </div>
+        </div>
+
+        <!-- Поле для ввода ставки -->
+        <div class="input-container">
+            <input type="number" id="betAmount" placeholder="Enter your bet">
+        </div>
+
+        <!-- Кнопки выбора -->
+        <div class="button-container">
+            <button class="button" data-choice="1-2" onclick="playDice('1-2')">1-2</button>
+            <button class="button" data-choice="3-4" onclick="playDice('3-4')">3-4</button>
+            <button class="button" data-choice="5-6" onclick="playDice('5-6')">5-6</button>
+        </div>
+
+        <!-- Результат -->
+        <div id="result" class="result"></div>
+
+        <!-- Кнопка возврата -->
+        <button class="return-button" onclick="returnToMenu()">Return to Menu</button>
+    </div>
 </body>
 </html>
