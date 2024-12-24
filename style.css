@@ -97,3 +97,23 @@ body {
         transform: rotate(360deg);
     }
 }
+#balanceContainer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: gold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#balanceDisplay {
+    font-weight: bold;
+}
+
+.balance-icon {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}

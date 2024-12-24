@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,45 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Загрузочный экран -->
     <div id="loadingScreen">
         <div class="loader"></div>
     </div>
-
-    <!-- Основной контент -->
-    <div id="mainContent" style="display: none;">
-        <!-- Шапка -->
+    <div id="mainContent" style="display: none;"> <!-- Основной контент -->
         <div class="header">
-            <img src="header.png" alt="Заголовок">
+            <img src="header.png" alt="Header Image" class="header-image">
         </div>
-
-        <!-- Меню с балансом и играми -->
+        <div id="balanceContainer">
+            <img src="wallet_icon.png" alt="Wallet Icon" class="balance-icon" onclick="redirectToBot()">
+            <span id="balanceDisplay">Баланс: 0 TON</span>
+        </div>
+        <div id="coins"></div> <!-- Контейнер для монет -->
         <div class="container">
-            <!-- Секция баланса и кошелька -->
-            <div class="balance-section">
-                <div id="balanceDisplay" class="balance-text">0 ₽</div>
-                <div id="walletButton" class="balance-icon">
-                    <img src="wallet_icon.png" alt="Wallet">
-                </div>
-            </div>
-            
-            
-            <!-- Кнопки игр -->
-            <a href="coin_game.html"><img src="button1.png" class="image" alt="Игра с монетой"></a>
-            <a href="dice_game.html"><img src="button2.png" class="image" alt="Игра с кубиком"></a>
-            <img src="button_comingsoon.png" class="image" alt="Скоро">
+            <a href="coin_game.html"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
+            <img src="button2.png" class="image" alt="Image 2">
+            <img src="button_comingsoon.png" class="image" alt="Image 3">
+            <img src="button_comingsoon.png" class="image" alt="Image 3">
         </div>
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Показ загрузочного экрана
-        window.onload = () => {
-            setTimeout(() => {
-                document.getElementById("loadingScreen").style.display = "none";
-                document.getElementById("mainContent").style.display = "block";
-            }, 1000);
-        };
-    </script>
 </body>
 </html>
