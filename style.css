@@ -1,198 +1,99 @@
+/* Основные стили */
 body {
     margin: 0;
     padding: 0;
-    background-image: url('coins_background.png');
-    background-color: #111111;
-    background-size: cover; /* Растягиваем фоновое изображение на весь экран /
-    background-position: center; / Выравниваем фоновое изображение по центру /
-    background-repeat: repeat; / Запрещаем повторение фонового изображения */
-    color: gold;
     font-family: Arial, sans-serif;
-    text-align: center;
+    background-color: #000;
+    color: #ffa500;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Стили для контейнера кнопок */
-.container {
-    position: relative; /* Позиционируем относительно */
-    margin-top: 70px; /* Отступ сверху для расположения кнопок ниже */
-}
-
-/* Стили для кнопок */
-.image {
-    width: 130px;
-    height: 190px;
-    margin: 18px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-/* Стили для иконки баланса */
-.balance-icon {
-    position: absolute;
-    top: 150px;
-    right: 10px;
-    z-index: 999;
-}
-.balance-icon {
-    position: absolute; /* Позиционируем иконку абсолютно */
-    bottom: 0; /* Располагаем её внизу */
-    left: 90%; /* Располагаем по центру по горизонтали */
-    transform: translateX(-50%); /* Сдвигаем на половину ширины элемента влево */
-    width: 50px; /* Задаем ширину иконке кошелька */
-    height: auto; /* Высота автоматически рассчитывается для сохранения пропорций */
-}
-/* Стилизуем изображение иконки баланса */
-.balance-icon img {
-    width: 50px;
-    height: 50px;
-    /* Дополнительные стили, если необходимо */
-}
-
-.header-image {
+/* Шапка */
+.header img {
     width: 100%;
-    max-width: 600px;
     height: auto;
 }
-.coin {
+
+/* Контейнер для элементов */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 100px;
+    position: relative;
+}
+
+/* Секция баланса */
+.balance-section {
+    display: flex;
+    align-items: center;
     position: absolute;
-    width: 50px;
-    height: 50px;
-    background-image: url('coin_notbet.png'); /* Путь к изображению монеты */
-    z-index: 9999; /* Устанавливаем высокий z-index, чтобы монеты были поверх других элементов */
+    top: -80px;
+    left: 10px;
+    gap: 10px;
 }
 
-@keyframes fall {
-    from {
-        top: -50px; /* Начальное положение монет */
-    }
-    to {
-        top: 100%; /* Конечное положение монет (ниже экрана) */
-    }
+.balance-text {
+    font-size: 16px;
+    color: #ffa500;
 }
 
-
-@media screen and (max-width: 600px) {
-    .image {
-        width: calc(100% - 20px);
-    }
-}
-
-.image {
-    width: 130px;
-    height: 190px;
-    margin: 18px;
+.balance-icon img {
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
+}
+
+.balance-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Кнопки игр */
+.image {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .image:hover {
     transform: scale(1.1);
 }
 
-.image:active {
-    transform: scale(1);
-}
-
-.image:focus {
-    outline: none;
-}
-
-.image:focus:not(:hover) {
-    transform: scale(1);
-}
-
-* {
-    -webkit-tap-highlight-color: transparent; /* Для устройств с iOS */
-    -webkit-touch-callout: none; /* Для устройств с iOS */
-    -webkit-user-select: none; /* Для устройств с iOS */
-    -moz-user-select: none; /* Для устройств с Android */
-    -ms-user-select: none; /* Для устройств с Android */
-    user-select: none; /* Для устройств с Android */
-}
-
-.loader {
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #ffae00;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#loadingOverlay {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-}
-
-a:active,
-.image:active {
-    outline: none;
-    box-shadow: none;
-}
-.blob-1, .blob-2 {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    background: #fbff00;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.blob-1 {
-    left: 20%;
-    animation: osc-l 2.5s ease infinite;
-}
-
-.blob-2 {
-    left: 80%;
-    animation: osc-r 2.5s ease infinite;
-    background: rgb(255, 0, 0);
-}
-
-@keyframes osc-l {
-    0% { left: 20%; }
-    50% { left: 50%; }
-    100% { left: 20%; }
-}
-
-@keyframes osc-r {
-    0% { left: 80%; }
-    50% { left: 50%; }
-    100% { left: 80%; }
-}
-
+/* Загрузочный экран */
 #loadingScreen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    animation: fadeIn 1s ease forwards;
+    z-index: 1000;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ffa500;
+    border-top: 5px solid #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

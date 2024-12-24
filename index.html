@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,25 +7,44 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Загрузочный экран -->
     <div id="loadingScreen">
         <div class="loader"></div>
     </div>
-    <div id="mainContent" style="display: none;"> <!-- Основной контент (скрыт до завершения загрузки) -->
+
+    <!-- Основной контент -->
+    <div id="mainContent" style="display: none;">
+        <!-- Шапка -->
         <div class="header">
-            <img src="header.png" alt="Header Image" class="header-image">
+            <img src="header.png" alt="Заголовок">
         </div>
-        <div id="coins"></div> <!-- Контейнер для монет -->
+
+        <!-- Меню с балансом и играми -->
         <div class="container">
-            <a href="coin_game.html"><img src="button1.png" class="image" alt="Coin Flip Game"></a>
-            <a href="dice_game.html"><img src="button2.png" class="image" alt="Dice Game"></a>
-            
-            <img src="button_comingsoon.png" class="image" alt="Image 3">
-            <img src="button_comingsoon.png" class="image" alt="Image 3">
+            <!-- Секция баланса и кошелька -->
+            <div class="balance-section">
+                <div id="balanceDisplay" class="balance-text">Загрузка...</div>
+                <div id="walletButton" class="balance-icon">
+                    <img src="wallet_icon.png" alt="Кошелек">
+                </div>
+            </div>
+
+            <!-- Кнопки игр -->
+            <a href="coin_game.html"><img src="button1.png" class="image" alt="Игра с монетой"></a>
+            <a href="dice_game.html"><img src="button2.png" class="image" alt="Игра с кубиком"></a>
+            <img src="button_comingsoon.png" class="image" alt="Скоро">
         </div>
     </div>
 
-    <img src="wallet_icon.png" alt="Balance Icon" class="balance-icon"> <!-- Иконка кошелька -->
-
-    <script src="script.js"></script> <!-- Подключаем скрипт для управления загрузкой -->
+    <script src="script.js"></script>
+    <script>
+        // Показ загрузочного экрана
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById("loadingScreen").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+            }, 1000);
+        };
+    </script>
 </body>
 </html>
