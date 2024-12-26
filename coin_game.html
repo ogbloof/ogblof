@@ -30,7 +30,7 @@
 
         .header-logo {
             width: 100%;
-            height: 80px;
+            height: 120px;
             background-image: url('header.png');
             background-size: cover;
             background-position: center;
@@ -160,8 +160,8 @@
 
             // Генерация случайного исхода (Bet или Not)
             const isHeads = Math.random() > 0.5; // heads: true, tails: false
-            const outcomeImage = isHeads ? "not_coin.png" : "bet_coin.png";
-            const outcomeText = isHeads ? "Not" : "Bet";
+            const outcomeImage = isHeads ? "bet_coin.png" : "not_coin.png";
+            const outcomeText = isHeads ? "Bet" : "Not";
 
             // Сброс предыдущей анимации
             coin.classList.remove('flip');
@@ -185,7 +185,7 @@
                 resultDiv.textContent = `Result: ${outcomeText}`;
 
                 // Определяем, был ли угадан результат
-                if ((userChoice === "not" && isHeads) || (userChoice === "bet" && !isHeads)) {
+                if ((userChoice === "bet" && isHeads) || (userChoice === "not" && !isHeads)) {
                     resultDiv.textContent += " - You win!";
                 } else {
                     resultDiv.textContent += " - You lose!";
